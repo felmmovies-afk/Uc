@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050716">
+  <meta name="description" content="NEGM REALITY — ادخل إلى كون افتراضي غامض وتجربة تفاعلية غير تقليدية.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>NEGM REALITY — بوابة الأبعاد</title>
+  <style>
+    :root{--bg:#050716;--ink:#f5f7ff;--muted:#aeb8da;--cyan:#43eaff;--blue:#4a74ff;--violet:#b34cff;--glass:rgba(8,13,39,.68);--line:rgba(96,204,255,.34);--glow:0 0 24px rgba(55,166,255,.35)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;min-height:100vh}
+    body.light{--bg:#eef4ff;--ink:#101831;--muted:#4f5c7d;--glass:rgba(255,255,255,.76);--line:rgba(42,105,210,.3)}
+    button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+    #universe{position:fixed;inset:0;width:100%;height:100%;z-index:-2;background:radial-gradient(ellipse at 50% 40%,#111a53 0%,#070a20 48%,#02030b 100%)}
+    .nebula{position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 25% 30%,rgba(74,74,255,.18),transparent 35%),radial-gradient(ellipse at 75% 65%,rgba(185,45,255,.14),transparent 30%),radial-gradient(ellipse at 48% 90%,rgba(0,211,255,.1),transparent 32%);animation:nebula 18s ease-in-out infinite alternate}
+    @keyframes nebula{to{transform:translate3d(2%,-2%,0) scale(1.08);filter:hue-rotate(35deg)}}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--line);background:rgba(3,5,18,.78);backdrop-filter:blur(18px)}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:900;letter-spacing:1px;font-size:20px}.brand img{width:35px;height:35px;filter:drop-shadow(0 0 10px #6b60ff)}.brand span{background:linear-gradient(90deg,#fff,#64eaff,#b58aff);color:transparent;background-clip:text}
+    .nav{display:flex;gap:7px;align-items:center}.nav a,.nav button,.iconbtn{border:1px solid transparent;color:var(--ink);background:transparent;border-radius:999px;padding:10px 13px;font-size:13px}.nav a:hover,.nav button:hover,.iconbtn:hover{border-color:var(--line);background:rgba(57,112,255,.13)}
+    .install{border:1px solid #4be8ff!important;background:linear-gradient(110deg,rgba(0,181,255,.22),rgba(149,62,255,.22))!important;box-shadow:var(--glow);font-weight:bold}
+    .menu-toggle{display:none}
+    .hero{max-width:1200px;margin:auto;min-height:calc(88vh - 60px);padding:70px 24px 44px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:24px;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);font-size:12px;background:rgba(15,29,75,.4)}
+    .pulse{width:7px;height:7px;border-radius:50%;background:#57f5ff;box-shadow:0 0 12px #57f5ff;animation:pulse 1.6s infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+    h1{font-size:clamp(42px,7vw,88px);line-height:1.04;margin:20px 0 14px;letter-spacing:-2px}.gradient{background:linear-gradient(100deg,#fff 5%,#65edff 34%,#9b7bff 68%,#ff73e5);background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(94,114,255,.25))}
+    .lead{font-size:clamp(16px,2vw,20px);line-height:1.9;color:var(--muted);max-width:540px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .primary,.secondary{padding:14px 20px;border-radius:15px;border:1px solid var(--cyan);color:white;background:linear-gradient(115deg,rgba(0,201,255,.24),rgba(118,67,255,.28));box-shadow:var(--glow);transition:.25s}.primary:hover,.secondary:hover{transform:translateY(-3px);box-shadow:0 0 35px rgba(65,210,255,.4)}.secondary{border-color:rgba(166,174,255,.4);background:rgba(255,255,255,.04);box-shadow:none}
+    .portal-wrap{height:min(68vw,500px);min-height:300px;display:grid;place-items:center;position:relative;perspective:900px}
+    .portal{width:min(72vw,380px);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;transform-style:preserve-3d;animation:float 6s ease-in-out infinite}
+    .portal:before,.portal:after{content:"";position:absolute;inset:5%;border-radius:50%;border:2px solid rgba(81,233,255,.8);box-shadow:0 0 22px #318bff,inset 0 0 28px #5c4dff;transform:rotateX(65deg) rotateZ(20deg);animation:spin 12s linear infinite}
+    .portal:after{inset:14%;border-color:#c56cff;transform:rotateX(65deg) rotateZ(-25deg);animation-duration:8s;animation-direction:reverse;box-shadow:0 0 25px #8b43ff,inset 0 0 28px #2b8fff}
+    .portal-core{width:48%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fff 0%,#65f1ff 3%,#594cff 15%,#080b2a 48%,transparent 70%);box-shadow:0 0 45px #388dff,0 0 90px rgba(144,55,255,.7);animation:core 4s ease-in-out infinite alternate}
+    .ring{position:absolute;border:1px solid rgba(125,205,255,.45);border-radius:50%;inset:-6%;transform:rotateX(70deg) rotateY(15deg);animation:spin 25s linear infinite}
+    .ring.r2{inset:-14%;transform:rotateY(70deg) rotateX(15deg);animation-duration:32s;animation-direction:reverse}
+    @keyframes spin{to{rotate:360deg}}@keyframes float{50%{transform:translateY(-12px) rotateY(5deg)}}@keyframes core{to{transform:scale(1.13);filter:hue-rotate(40deg)}}
+    .orbit-label{position:absolute;bottom:4%;right:0;background:var(--glass);border:1px solid var(--line);padding:12px 15px;border-radius:14px;backdrop-filter:blur(12px);font-size:12px;color:var(--muted)}
+    .section{max-width:1150px;margin:0 auto;padding:45px 22px}.section-head{text-align:center;margin-bottom:28px}.section-head h2{font-size:clamp(27px,4vw,42px);margin:10px 0}.section-head p{color:var(--muted);line-height:1.8}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{position:relative;overflow:hidden;padding:23px 19px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(21,31,78,.72),var(--glass));backdrop-filter:blur(14px);min-height:180px;transition:.3s}.card:before{content:"";position:absolute;inset:-80% 40% 30% -40%;background:radial-gradient(circle,rgba(72,226,255,.16),transparent 65%);pointer-events:none}.card:hover{transform:translateY(-6px);border-color:rgba(110,235,255,.75);box-shadow:var(--glow)}.card-icon{font-size:29px;color:var(--cyan);text-shadow:0 0 18px #527cff}.card h3{margin:14px 0 8px}.card p{color:var(--muted);line-height:1.7;font-size:13px;margin:0}
+    .lab{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}.panel{border:1px solid var(--line);border-radius:22px;padding:22px;background:var(--glass);backdrop-filter:blur(14px)}.panel h3{margin-top:0}.sim-area{height:260px;position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(100,170,255,.25);background:radial-gradient(circle at center,rgba(63,71,205,.3),rgba(4,8,28,.7))}.sim-ball{position:absolute;width:25px;height:25px;border-radius:50%;background:radial-gradient(circle at 30% 30%,white,#54edff 25%,#4750ff 65%,#15154c);box-shadow:0 0 22px #45dfff;left:50%;top:50%;transform:translate(-50%,-50%);transition:left .08s,top .08s}.sim-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:13px}.sim-controls button{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:rgba(47,72,160,.2);color:var(--ink)}.meter{height:7px;border-radius:99px;background:#202746;overflow:hidden;margin:12px 0}.meter span{display:block;width:62%;height:100%;background:linear-gradient(90deg,#3aeaff,#a64cff);transition:width .3s}
+    .quote{font-size:clamp(20px,3vw,31px);line-height:1.7;font-weight:bold}.quote span{color:var(--cyan)}.portal-cta{text-align:center;padding:65px 20px 75px;background:radial-gradient(ellipse at 50% 100%,rgba(55,82,255,.2),transparent 60%)}.portal-cta p{color:var(--muted);line-height:1.8}
+    footer{padding:22px max(20px,env(safe-area-inset-right));border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px;background:rgba(3,5,18,.5)}.toast{position:fixed;z-index:50;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#101b3b;border:1px solid var(--cyan);border-radius:14px;padding:13px 18px;box-shadow:var(--glow);transition:.25s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .modal{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.72);display:none;place-items:center;padding:20px;backdrop-filter:blur(10px)}.modal.open{display:grid}.modal-box{width:min(500px,100%);padding:25px;border:1px solid var(--line);border-radius:22px;background:#080d25;box-shadow:0 0 50px rgba(76,88,255,.25)}.modal-box p{color:#bdc8e8;line-height:1.8}.close{float:left;border:1px solid var(--line);border-radius:10px;background:transparent;color:white;padding:7px 10px}
+    @media(max-width:800px){.topbar{padding:10px 14px}.menu-toggle{display:inline-block}.nav{display:none;position:absolute;top:62px;right:12px;left:12px;padding:12px;background:rgba(4,7,25,.97);border:1px solid var(--line);border-radius:18px;flex-direction:column;align-items:stretch}.nav.open{display:flex}.nav a,.nav button{text-align:center}.hero{grid-template-columns:1fr;padding:48px 20px 25px;min-height:auto;text-align:center}.hero-copy{order:2}.portal-wrap{order:1;height:300px;min-height:260px}.portal{width:250px}.lead{margin:0 auto}.actions{justify-content:center}.orbit-label{right:2%;bottom:0}.cards{grid-template-columns:repeat(2,1fr)}.lab{grid-template-columns:1fr}.section{padding:34px 16px}.cards .card{min-height:165px;padding:18px 15px}}
+    @media(max-width:420px){.brand{font-size:17px}.brand img{width:30px;height:30px}.install{padding:9px 10px!important;font-size:12px!important}.cards{gap:10px}.card{border-radius:16px}.card h3{font-size:15px}.card p{font-size:12px}.portal-wrap{height:255px}.portal{width:220px}.hero{padding-top:35px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <canvas id="universe" aria-hidden="true"></canvas><div class="nebula"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="NEGM REALITY الصفحة الرئيسية"><img src="icons/icon.svg" alt=""><span>NEGM REALITY</span></a>
+    <nav class="nav" id="nav">
+      <a href="#home">الرئيسية</a><a href="#worlds">العوالم</a><a href="#lab">المختبر</a><a href="#about">عن التجربة</a>
+      <button id="themeBtn">☼ المظهر</button><button id="installBtn" class="install" hidden>⬇ تثبيت التطبيق</button>
+    </nav>
+    <div style="display:flex;gap:6px;align-items:center"><button id="installTop" class="install" style="border-radius:999px;padding:9px 12px" hidden>⬇ تثبيت</button><button id="menuBtn" class="iconbtn menu-toggle" aria-label="فتح القائمة">☰</button></div>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><i class="pulse"></i> تجربة تفاعلية من خارج المألوف</div>
+        <h1>مش مجرد موقع…<br><span class="gradient">ده بُعد تاني.</span></h1>
+        <p class="lead">اقرب من البوابة. حرّك العالم بإيدك، جرّب الجاذبية، واكتشف كونًا رقميًا بيتغيّر مع كل لمسة.</p>
+        <div class="actions"><button class="primary" id="enterBtn">افتح البوابة ✦</button><a class="secondary" href="#lab">جرّب المختبر ↓</a></div>
+      </div>
+      <div class="portal-wrap" id="portalWrap" aria-label="بوابة ضوئية تفاعلية"><div class="portal" id="portal"><div class="ring"></div><div class="ring r2"></div><div class="portal-core"></div></div><div class="orbit-label">الحالة: <b style="color:var(--cyan)">البوابة مستقرة</b><br>اضغط عليها لتغيير التردد</div></div>
+    </section>
+    <section class="section" id="worlds">
+      <div class="section-head"><div class="eyebrow">اختر مسارك</div><h2>أربع نوافذ إلى المجهول</h2><p>كل نافذة تفتح لك فكرة مختلفة. دي تجربة بصرية، مش محاكاة علمية دقيقة.</p></div>
+      <div class="cards">
+        <button class="card" data-world="الجاذبية المعكوسة" style="text-align:right;color:inherit"><div class="card-icon">◉</div><h3>الجاذبية المعكوسة</h3><p>تخيّل إن الاتجاهات مش ثابتة… جرّب تغيير قواعد المشهد.</p></button>
+        <button class="card" data-world="المجرة المتحركة" style="text-align:right;color:inherit"><div class="card-icon">✧</div><h3>المجرة المتحركة</h3><p>نقاط ضوء بتتحرك في فضاء يتفاعل مع اللمس.</p></button>
+        <button class="card" data-world="الهندسة المستحيلة" style="text-align:right;color:inherit"><div class="card-icon">⬡</div><h3>الهندسة المستحيلة</h3><p>أشكال وأبعاد تلعب بخيالك وتكسر النمط المعتاد.</p></button>
+        <button class="card" data-world="نبض البوابة" style="text-align:right;color:inherit"><div class="card-icon">⟁</div><h3>نبض البوابة</h3><p>بدّل التردد وشوف ألوان العالم وهي بتتحوّل.</p></button>
+      </div>
+    </section>
+    <section class="section" id="lab">
+      <div class="section-head"><div class="eyebrow">مختبر التفاعل</div><h2>جرّب بنفسك</h2><p>حرّك الجسيم، غيّر قوة الجذب، وشاهد الاستجابة فورًا.</p></div>
+      <div class="lab">
+        <div class="panel"><h3>حقل الجاذبية</h3><div class="sim-area" id="simArea"><div class="sim-ball" id="simBall"></div></div><div class="sim-controls"><button id="gravityBtn">غيّر الجاذبية ↗</button><button id="resetBtn">إعادة الضبط ↺</button><button id="burstBtn">نبضة طاقة ✦</button></div></div>
+        <div class="panel"><h3>مؤشر طاقة البوابة</h3><p style="color:var(--muted);line-height:1.8">المؤشر ده جزء من التجربة البصرية، وبيستجيب لأزرارك ولمساتك. مش قياسًا فيزيائيًا حقيقيًا.</p><div style="display:flex;justify-content:space-between"><span>تردد البوابة</span><b id="frequency">62%</b></div><div class="meter"><span id="meterFill"></span></div><div class="quote">«الكون مش دايمًا محتاج إجابة…<br><span>أحيانًا محتاج باب.</span>»</div><div class="sim-controls"><button id="energyBtn">ارفع الطاقة</button><button id="calmBtn">هدّئ الكون</button></div></div>
+      </div>
+    </section>
+    <section class="portal-cta" id="about"><div class="eyebrow">NEGM / REALITY.EXE</div><h2 class="gradient" style="font-size:clamp(30px,5vw,52px)">مستعد تدخل؟</h2><p>المشهد بيتغيّر معاك. دوس وابدأ رحلة استكشافك.</p><button class="primary" id="finalEnter">ابدأ الرحلة الآن ↗</button></section>
+  </main>
+  <footer><div><b style="color:var(--ink)">✦ NEGM REALITY</b><br>عالم افتراضي من الخيال والتفاعل.</div><div>صُنع للاستكشاف • <span id="year"></span></div><button id="shareBtn" class="secondary" style="padding:8px 12px">مشاركة التجربة ↗</button></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="close" id="closeModal">إغلاق ✕</button><h2 id="modalTitle">أهلًا بك داخل البوابة</h2><p id="modalText">العالم جاهز للتفاعل. حرّك الشاشة أو جرّب الأزرار لاكتشاف تأثيرات مختلفة.</p><button class="primary" id="modalAction">خلّينا نبدأ ✦</button></div></div>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const toast = (message) => { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(window.__toastTimer); window.__toastTimer=setTimeout(()=>el.classList.remove('show'),2600); };
+  $('#year').textContent = new Date().getFullYear();
+  const nav=$('#nav'); $('#menuBtn').addEventListener('click',()=>nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+  $('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');toast(document.body.classList.contains('light')?'تم تشغيل المظهر الفاتح':'رجعنا للمظهر الكوني الداكن');});
+  const modal=$('#modal'); function openModal(title,text){$('#modalTitle').textContent=title;$('#modalText').textContent=text;modal.classList.add('open');}
+  function closeModal(){modal.classList.remove('open');}
+  $('#closeModal').addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+  $('#modalAction').addEventListener('click',()=>{closeModal();document.querySelector('#lab').scrollIntoView({behavior:'smooth'});});
+  function enter(){openModal('تم فتح البوابة ✦','أهلًا بك في NEGM REALITY. جرّب حقل الجاذبية، أو المس المشهد لتغيير حركة النجوم. التجربة خيالية وبصرية بالكامل.');}
+  $('#enterBtn').addEventListener('click',enter);$('#finalEnter').addEventListener('click',enter);
+  const portal=$('#portal'); let freq=62;
+  function setFreq(v){freq=Math.max(10,Math.min(100,v));$('#frequency').textContent=freq+'%';$('#meterFill').style.width=freq+'%';portal.style.filter=`hue-rotate(${freq*2}deg) saturate(${.8+freq/100})`;portal.style.animationDuration=(8-freq/20)+'s';}
+  portal.addEventListener('click',()=>{setFreq(freq+13);toast('تردد البوابة اتغيّر إلى '+freq+'%');});
+  document.querySelectorAll('[data-world]').forEach(btn=>btn.addEventListener('click',()=>{const w=btn.dataset.world;setFreq(25+Math.floor(Math.random()*70));openModal(w,'أنت الآن بتستكشف: '+w+'. حرّك المشهد وجرّب عناصر المختبر لتغيير التجربة.');}));
+  const sim=$('#simArea'),ball=$('#simBall');let gravity=1,ballX=50,ballY=50;
+  function moveBall(x,y){ballX=Math.max(5,Math.min(95,x));ballY=Math.max(8,Math.min(92,y));ball.style.left=ballX+'%';ball.style.top=ballY+'%';}
+  sim.addEventListener('pointerdown',e=>{const r=sim.getBoundingClientRect();moveBall((e.clientX-r.left)/r.width*100,(e.clientY-r.top)/r.height*100);});
+  sim.addEventListener('pointermove',e=>{if(e.buttons){const r=sim.getBoundingClientRect();moveBall((e.clientX-r.left)/r.width*100,(e.clientY-r.top)/r.height*100);}});
+  $('#gravityBtn').addEventListener('click',()=>{gravity*=-1;moveBall(50+Math.random()*35*(gravity),50+Math.random()*30*(gravity));toast(gravity>0?'الجاذبية: جذب نحو المركز':'الجاذبية: اتجاه معكوس');});
+  $('#resetBtn').addEventListener('click',()=>{gravity=1;moveBall(50,50);setFreq(62);toast('تمت إعادة ضبط المختبر');});
+  $('#burstBtn').addEventListener('click',()=>{sim.animate([{filter:'brightness(1)'},{filter:'brightness(2.7) hue-rotate(70deg)'},{filter:'brightness(1)'}],{duration:650});moveBall(8+Math.random()*84,10+Math.random()*80);setFreq(freq+8);toast('نبضة طاقة!');});
+  $('#energyBtn').addEventListener('click',()=>{setFreq(freq+10);toast('طاقة البوابة: '+freq+'%');});
+  $('#calmBtn').addEventListener('click',()=>{setFreq(35);toast('هدأ الكون قليلًا');});
+  $('#shareBtn').addEventListener('click',async()=>{const data={title:document.title,text:'جرّب NEGM REALITY — بوابة إلى كون افتراضي غامض',url:location.href};try{if(navigator.share)await navigator.share(data);else if(navigator.clipboard){await navigator.clipboard.writeText(location.href);toast('تم نسخ رابط الموقع');}else toast('انسخ رابط الموقع من شريط العنوان لمشاركته');}catch(e){if(e.name!=='AbortError')toast('تعذرت المشاركة من هذا المتصفح');}});
+  // Lightweight interactive starfield, tuned for mobile devices.
+  const canvas=$('#universe'),ctx=canvas.getContext('2d');let W,H,dpr,stars=[],pointer={x:-1000,y:-1000};
+  function resize(){dpr=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(180,Math.floor(W*H/6500));stars=Array.from({length:count},()=>({x:Math.random()*W,y:Math.random()*H,z:.3+Math.random()*1.7,r:.3+Math.random()*1.3,p:Math.random()*6.28}));}
+  function draw(){ctx.clearRect(0,0,W,H);for(const s of stars){s.p+=.012;let dx=pointer.x-s.x,dy=pointer.y-s.y,dist=Math.hypot(dx,dy);if(dist<100&&dist>0){s.x-=dx/dist*.35;s.y-=dy/dist*.35;}s.x+=Math.sin(s.p)*.08;if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;const alpha=.3+.5*(.5+.5*Math.sin(s.p));ctx.beginPath();ctx.fillStyle=`rgba(${Math.random()<.015?'191,111,255':'100,220,255'},${alpha})`;ctx.arc(s.x,s.y,s.r*s.z,0,Math.PI*2);ctx.fill();}requestAnimationFrame(draw);}
+  window.addEventListener('resize',resize,{passive:true});window.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY;},{passive:true});window.addEventListener('pointerout',e=>{if(!e.relatedTarget){pointer.x=-1000;pointer.y=-1000;}},{passive:true});resize();draw();
+  // PWA install button appears only when the browser provides a valid install prompt.
+  let deferredPrompt=null;const installButtons=[$('#installBtn'),$('#installTop')];
+  function showInstall(){installButtons.forEach(b=>b.hidden=!deferredPrompt);}
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;showInstall();});
+  async function install(){if(!deferredPrompt){toast('لو زر التثبيت مش ظاهر، افتح قائمة المتصفح واختر «إضافة إلى الشاشة الرئيسية».');return;}deferredPrompt.prompt();const result=await deferredPrompt.userChoice;toast(result.outcome==='accepted'?'بدأ تثبيت NEGM REALITY':'تم إلغاء التثبيت');deferredPrompt=null;showInstall();}
+  installButtons.forEach(b=>b.addEventListener('click',install));
+  window.addEventListener('appinstalled',()=>{deferredPrompt=null;showInstall();toast('تم تثبيت NEGM REALITY بنجاح ✦');});
+  if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
